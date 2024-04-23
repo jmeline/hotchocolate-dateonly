@@ -16,9 +16,9 @@ public class Startup
         services
             .AddSingleton<ProductRepository>()
             .AddGraphQLServer()
-            // .BindRuntimeType<DateOnly, DateType>()
-            // .AddTypeConverter<DateOnly, DateTime>(from => from.ToDateTime(default))
-            // .AddTypeConverter<DateTime, DateOnly>(from => DateOnly.FromDateTime(from.Date))
+            .BindRuntimeType<DateOnly, DateType>()
+            .AddTypeConverter<DateOnly, DateTime>(from => from.ToDateTime(default))
+            .AddTypeConverter<DateTime, DateOnly>(from => DateOnly.FromDateTime(from.Date))
             .AddQueryType<Query>();
     }
 
